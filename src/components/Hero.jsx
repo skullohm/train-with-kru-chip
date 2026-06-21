@@ -10,9 +10,9 @@ export default function Hero() {
     >
       <div className="absolute inset-0">
         <img
-          src="/images/chip-boxing.webp"
+          src="/images/chip-win01.png"
           alt=""
-          className="h-full w-full object-cover object-top opacity-30"
+          className="h-full w-full object-cover object-center opacity-30"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-void via-void/85 to-void/40" />
         <div className="absolute inset-0 bg-gradient-to-t from-void via-transparent to-void/60" />
@@ -21,9 +21,9 @@ export default function Hero() {
       <div className="absolute top-1/3 right-0 h-[50vh] w-[55vw] sm:h-[60vh] sm:w-[50vw] lg:h-[70vh] lg:w-[45vw]">
         <div className="relative h-full w-full animate-float-slow">
           <img
-            src="/images/coach-chip.webp"
-            alt="Chip Moraza-Pollard"
-            className="h-full w-full object-cover object-top opacity-50 lg:opacity-90"
+            src="/images/chip-win01.png"
+            alt="Chip Moraza-Pollard celebrating a championship win"
+            className="h-full w-full object-cover object-center opacity-50 lg:opacity-90"
             style={{
               maskImage: 'linear-gradient(to left, black 60%, transparent 100%)',
               WebkitMaskImage: 'linear-gradient(to left, black 60%, transparent 100%)',

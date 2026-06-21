@@ -1,21 +1,51 @@
 import { useState } from 'react'
-import { GYM } from '../data/content'
+import { GYM, WEB3FORMS } from '../data/content'
 import CtaButton from './CtaButton'
 import ScrollReveal from './ScrollReveal'
 
 export default function Contact() {
   const [form, setForm] = useState({ name: '', email: '', message: '' })
-  const [submitted, setSubmitted] = useState(false)
+  const [status, setStatus] = useState('idle') // idle | sending | success | error
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    const subject = encodeURIComponent(`Training Inquiry from ${form.name}`)
-    const body = encodeURIComponent(
-      `Name: ${form.name}\nEmail: ${form.email}\n\n${form.message}`,
-    )
-    window.location.href = `mailto:${GYM.email}?subject=${subject}&body=${body}`
-    setSubmitted(true)
+    setStatus('sending')
+
+    try {
+      const response = await fetch(WEB3FORMS.endpoint, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify({
+          access_key: WEB3FORMS.accessKey,
+          name: form.name,
+          email: form.email,
+          message: form.message,
+          subject: `Training Inquiry from ${form.name}`,
+        }),
+      })
+
+      const result = await response.json()
+
+      if (result.success) {
+        setStatus('success')
+        setForm({ name: '', email: '', message: '' })
+      } else {
+        setStatus('error')
+      }
+    } catch {
+      setStatus('error')
+    }
   }
+
+  const buttonLabel = {
+    idle: 'Send Message',
+    sending: 'Sending...',
+    success: 'Message Sent!',
+    error: 'Try Again',
+  }[status]
 
   return (
     <section id="contact" className="relative py-24 lg:py-32">
@@ -77,20 +107,38 @@ export default function Contact() {
 
           <ScrollReveal delay={1}>
             <form
+              action={WEB3FORMS.endpoint}
+              method="POST"
               onSubmit={handleSubmit}
               className="hud-corner border border-ember/20 bg-panel-light p-6 md:p-8"
             >
+              <input type="hidden" name="access_key" value={WEB3FORMS.accessKey} />
+
               <p className="font-mono text-xs tracking-[0.25em] text-ember uppercase">Send a Message</p>
+
+              {status === 'success' && (
+                <p className="mt-4 border border-ember/30 bg-garnet/20 px-4 py-3 text-sm text-white">
+                  Thanks for reaching out! We'll get back to you soon.
+                </p>
+              )}
+
+              {status === 'error' && (
+                <p className="mt-4 border border-ember/50 bg-garnet/30 px-4 py-3 text-sm text-white">
+                  Something went wrong. Please try again or email us directly.
+                </p>
+              )}
 
               <div className="mt-6 space-y-5">
                 <label className="block">
                   <span className="font-mono text-[10px] tracking-[0.2em] text-steel uppercase">Name</span>
                   <input
                     type="text"
+                    name="name"
                     required
+                    disabled={status === 'sending'}
                     value={form.name}
                     onChange={(e) => setForm({ ...form, name: e.target.value })}
-                    className="mt-2 w-full border border-steel/20 bg-void px-4 py-3 text-white outline-none transition-colors focus:border-ember"
+                    className="mt-2 w-full border border-steel/20 bg-void px-4 py-3 text-white outline-none transition-colors focus:border-ember disabled:opacity-50"
                     placeholder="Your name"
                   />
                 </label>
@@ -98,21 +146,25 @@ export default function Contact() {
                   <span className="font-mono text-[10px] tracking-[0.2em] text-steel uppercase">Email</span>
                   <input
                     type="email"
+                    name="email"
                     required
+                    disabled={status === 'sending'}
                     value={form.email}
                     onChange={(e) => setForm({ ...form, email: e.target.value })}
-                    className="mt-2 w-full border border-steel/20 bg-void px-4 py-3 text-white outline-none transition-colors focus:border-ember"
+                    className="mt-2 w-full border border-steel/20 bg-void px-4 py-3 text-white outline-none transition-colors focus:border-ember disabled:opacity-50"
                     placeholder="you@email.com"
                   />
                 </label>
                 <label className="block">
                   <span className="font-mono text-[10px] tracking-[0.2em] text-steel uppercase">Message</span>
                   <textarea
+                    name="message"
                     required
                     rows={4}
+                    disabled={status === 'sending'}
                     value={form.message}
                     onChange={(e) => setForm({ ...form, message: e.target.value })}
-                    className="mt-2 w-full resize-none border border-steel/20 bg-void px-4 py-3 text-white outline-none transition-colors focus:border-ember"
+                    className="mt-2 w-full resize-none border border-steel/20 bg-void px-4 py-3 text-white outline-none transition-colors focus:border-ember disabled:opacity-50"
                     placeholder="Tell us about your training goals..."
                   />
                 </label>
@@ -120,9 +172,10 @@ export default function Contact() {
 
               <button
                 type="submit"
-                className="cta-shadow mt-6 w-full bg-ember px-8 py-3.5 font-display text-lg tracking-[0.12em] text-white uppercase transition-all hover:bg-ember-glow hover:scale-[1.01]"
+                disabled={status === 'sending'}
+                className="cta-shadow mt-6 w-full bg-ember px-8 py-3.5 font-display text-lg tracking-[0.12em] text-white uppercase transition-all hover:bg-ember-glow hover:scale-[1.01] disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:scale-100"
               >
-                {submitted ? 'Opening Email...' : 'Send Message'}
+                {buttonLabel}
               </button>
             </form>
           </ScrollReveal>

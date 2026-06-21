@@ -1,5 +1,5 @@
-import { useEffect } from 'react'
 import BackgroundEffects from '../components/BackgroundEffects'
+import { useDocumentMeta } from '../hooks/useDocumentMeta'
 import KruNavbar from '../components/kru/KruNavbar'
 import KruHero from '../components/kru/KruHero'
 import KruMarquee from '../components/kru/KruMarquee'
@@ -10,12 +10,10 @@ import KruCta from '../components/kru/KruCta'
 import KruFooter from '../components/kru/KruFooter'
 
 export default function KruLanding() {
-  useEffect(() => {
-    document.title = 'Train With Kru Chip | Surgeon Muay Thai'
-    return () => {
-      document.title = 'Train With Chip | Surgeon Muay Thai'
-    }
-  }, [])
+  useDocumentMeta({
+    title: 'Train With Kru Chip | Surgeon Muay Thai',
+    robots: 'noindex, nofollow',
+  })
 
   return (
     <div className="relative">

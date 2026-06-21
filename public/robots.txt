@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Kru landing is shared by direct link only — not linked from main navigation
+Disallow: /kru

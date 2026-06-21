@@ -1,4 +1,5 @@
 import BackgroundEffects from '../components/BackgroundEffects'
+import { useDocumentMeta } from '../hooks/useDocumentMeta'
 import Navbar from '../components/Navbar'
 import Hero from '../components/Hero'
 import MarqueeTape from '../components/MarqueeTape'
@@ -10,6 +11,11 @@ import Contact from '../components/Contact'
 import Footer from '../components/Footer'
 
 export default function HomePage() {
+  useDocumentMeta({
+    title: 'Train With Chip | Surgeon Muay Thai',
+    robots: 'index, follow',
+  })
+
   return (
     <div className="relative">
       <BackgroundEffects />

@@ -6,6 +6,11 @@ export const SITE = {
   url: 'https://surgeonmuaythai.com',
 }
 
+export const WEB3FORMS = {
+  accessKey: '11100f77-17a4-4208-be72-a4f00484a72a',
+  endpoint: 'https://api.web3forms.com/submit',
+}
+
 export const GYM = {
   address: '88 Camelot Dr. Unit #23, Plymouth, MA 02360',
   email: 'surgeonmuaythai@gmail.com',

@@ -100,11 +100,29 @@ export const EVENTS = [
 ]
 
 export const NAV_ITEMS = [
-  { label: 'Home', href: '#home' },
-  { label: 'About', href: '#about' },
-  { label: 'Gym', href: '#gym' },
-  { label: 'Events', href: '#events' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Home', href: '/' },
+  { label: 'About', href: '/#about' },
+  { label: 'Gym', href: '/#gym' },
+  { label: 'Events', href: '/#events' },
+  { label: 'Contact', href: '/#contact' },
+  { label: 'Projects', href: '/projects' },
+]
+
+export const PROJECTS = [
+  {
+    id: 'workout-timer',
+    title: 'Workout Timer',
+    description: 'A clean and focused workout timer built for rounds and intervals.',
+    url: 'https://fight-forge-rounds.lovable.app/',
+    preview: 'timer',
+  },
+  {
+    id: 'birth-color',
+    title: 'Muay Thai Fighter Birth Color',
+    description: 'Discover your Muay Thai fighter birth color and what it represents.',
+    url: 'https://muay-thai-lucky-hue.lovable.app/',
+    preview: 'color',
+  },
 ]
 
 export const MARQUEE_ITEMS = [

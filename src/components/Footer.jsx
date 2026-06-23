@@ -21,13 +21,13 @@ export default function Footer() {
           <div>
             <p className="font-mono text-[10px] tracking-[0.25em] text-ember uppercase">Quick Links</p>
             <ul className="mt-4 space-y-2">
-              {['#home', '#about', '#gym', '#events', '#contact'].map((href) => (
+              {['/', '/#about', '/#gym', '/#events', '/#contact', '/projects'].map((href) => (
                 <li key={href}>
                   <a
                     href={href}
                     className="text-sm text-steel transition-colors hover:text-ember"
                   >
-                    {href.replace('#', '').charAt(0).toUpperCase() + href.replace('#', '').slice(1)}
+                    {href === '/' ? 'Home' : href.replace('/#', '').replace('/', '').charAt(0).toUpperCase() + href.replace('/#', '').replace('/', '').slice(1)}
                   </a>
                 </li>
               ))}

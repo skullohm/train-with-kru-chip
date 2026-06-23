@@ -62,6 +62,16 @@ export default function Footer() {
                   @chipthesurgeon
                 </a>
               </li>
+              <li>
+                <a
+                  href="https://fight-forge-rounds.lovable.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-steel transition-colors hover:text-ember"
+                >
+                  F2F Timer
+                </a>
+              </li>
             </ul>
           </div>
         </div>

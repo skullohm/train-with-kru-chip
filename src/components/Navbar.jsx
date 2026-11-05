@@ -1,6 +1,12 @@
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { NAV_ITEMS, GYM } from '../data/content'
 import CtaButton from './CtaButton'
+
+function NavigationLink({ href, ...props }) {
+  // Keep native scrolling for home sections, including when returning from a page.
+  return href.includes('#') ? <a href={href} {...props} /> : <Link to={href} {...props} />
+}
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
@@ -26,7 +32,7 @@ export default function Navbar() {
       }`}
     >
       <nav className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-5 py-4 lg:px-8">
-        <a href="/" className="group flex items-center gap-3">
+        <NavigationLink href="/" className="group flex items-center gap-3">
           <img
             src="/images/smt-logo.svg"
             alt="Surgeon Muay Thai"
@@ -36,27 +42,27 @@ export default function Navbar() {
             <p className="font-display text-xl tracking-wider text-white">THE SURGEON</p>
             <p className="font-mono text-[10px] tracking-[0.3em] text-ember uppercase">Train With Chip</p>
           </div>
-        </a>
+        </NavigationLink>
 
         <ul className="hidden items-center gap-3 xl:gap-5 xl:flex">
           {NAV_ITEMS.map((item) => (
             <li key={item.href}>
-              <a
+              <NavigationLink
                 href={item.href}
                 className="group relative font-mono text-xs tracking-[0.2em] text-steel uppercase transition-colors hover:text-white"
               >
                 {item.label}
                 <span className="absolute -bottom-1 left-0 h-px w-0 bg-ember transition-all duration-300 group-hover:w-full" />
-              </a>
+              </NavigationLink>
             </li>
           ))}
         </ul>
 
         <div className="hidden shrink-0 items-center gap-2 whitespace-nowrap xl:flex">
           <CtaButton href="https://app.kruchip.com" variant="gold" className="!px-4">Open the App</CtaButton>
-          <a href="/support" className="inline-flex items-center justify-center rounded-lg bg-white px-4 py-3.5 font-display text-lg tracking-[0.12em] text-void uppercase transition-colors hover:bg-white/90">
+          <NavigationLink href="/support" className="inline-flex items-center justify-center rounded-lg bg-white px-4 py-3.5 font-display text-lg tracking-[0.12em] text-void uppercase transition-colors hover:bg-white/90">
             Support
-          </a>
+          </NavigationLink>
           <CtaButton href={GYM.bookingUrl} external variant="primary" className="!px-4">
             Start Training
           </CtaButton>
@@ -83,20 +89,20 @@ export default function Navbar() {
         <ul className="flex flex-col gap-2 p-6">
           {NAV_ITEMS.map((item) => (
             <li key={item.href}>
-              <a
+              <NavigationLink
                 href={item.href}
                 onClick={() => setMenuOpen(false)}
                 className="block border-l-2 border-ember/40 py-3 pl-4 font-display text-3xl tracking-wider text-white transition-colors hover:border-ember hover:text-ember"
               >
                 {item.label}
-              </a>
+              </NavigationLink>
             </li>
           ))}
           <li className="mt-6">
             <CtaButton href="https://app.kruchip.com" variant="gold" className="mb-3 w-full">Open the App</CtaButton>
-            <a href="/support" onClick={() => setMenuOpen(false)} className="mb-3 inline-flex w-full items-center justify-center rounded-lg bg-white px-4 py-3.5 font-display text-lg tracking-[0.12em] text-void uppercase transition-colors hover:bg-white/90">
+            <NavigationLink href="/support" onClick={() => setMenuOpen(false)} className="mb-3 inline-flex w-full items-center justify-center rounded-lg bg-white px-4 py-3.5 font-display text-lg tracking-[0.12em] text-void uppercase transition-colors hover:bg-white/90">
               Support
-            </a>
+            </NavigationLink>
             <CtaButton href={GYM.bookingUrl} external variant="primary" className="w-full">
               Start Training
             </CtaButton>

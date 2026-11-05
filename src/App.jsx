@@ -3,6 +3,7 @@ import HomePage from './pages/HomePage'
 import KruLanding from './pages/KruLanding'
 import SeminarsPage from './pages/SeminarsPage'
 import SupportPage from './pages/SupportPage'
+import NotFoundPage from './pages/NotFoundPage'
 
 export default function App() {
   return (
@@ -12,6 +13,7 @@ export default function App() {
         <Route path="/kru" element={<KruLanding />} />
         <Route path="/seminars" element={<SeminarsPage />} />
         <Route path="/support" element={<SupportPage />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </BrowserRouter>
   )

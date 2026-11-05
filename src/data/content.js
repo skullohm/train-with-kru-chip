@@ -109,7 +109,6 @@ export const NAV_ITEMS = [
   { label: 'Gym', href: '/#gym' },
   { label: 'Events', href: '/#events' },
   { label: 'Contact', href: '/#contact' },
-  { label: 'Seminars', href: '/seminars' },
   { label: 'Support', href: '/support' },
 ]
 

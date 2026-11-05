@@ -1,6 +1,10 @@
 import { EVENTS, GYM } from '../data/content'
 import CtaButton from './CtaButton'
 import ScrollReveal from './ScrollReveal'
+import FightCountdown from './FightCountdown'
+import InquiryForm from './InquiryForm'
+
+const FIGHT_FORM_KEY = 'a035ce70-0301-49c3-87a7-156b50d07a65'
 
 const STATUS_STYLES = {
   upcoming: 'border-ember bg-ember/20 text-ember',
@@ -53,17 +57,31 @@ export default function Events() {
                         {event.title}
                       </h3>
                       <p className="mt-1 font-mono text-xs tracking-[0.15em] text-steel uppercase">{event.venue}</p>
+                      {event.ticketsUrl && (
+                        <div className="mt-3 space-y-2">
+                          <p className="text-white">{event.promotion}</p>
+                          <p>{event.fightDate}</p>
+                          <p>{event.times} Eastern</p>
+                          <FightCountdown />
+                        </div>
+                      )}
                       <p className="mt-3 max-w-xl text-steel">{event.description}</p>
                     </div>
                   </div>
 
                   {event.status === 'upcoming' && (
-                    <CtaButton href={GYM.socials.chipInstagram} external variant="secondary">
-                      Follow Updates
+                    <CtaButton href={event.ticketsUrl} external variant="primary" className="rounded-lg">
+                      GET TICKETS
                     </CtaButton>
                   )}
                 </div>
               </article>
+              {event.ticketsUrl && (
+                <div className="mt-5">
+                  <p className="mb-4 text-steel">Fight news and fight camp drops. Nothing else.</p>
+                  <InquiryForm accessKey={FIGHT_FORM_KEY} subject="Kruchip Fight Updates Signup" fields={[{ name: 'email', label: 'Email', type: 'email' }]} buttonLabel="Get Fight Updates" successMessage="You're on the list. See you at the House of Blues." />
+                </div>
+              )}
             </ScrollReveal>
           ))}
         </div>

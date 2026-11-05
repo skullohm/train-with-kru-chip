@@ -10,6 +10,7 @@ export default function CtaButton({
     'group relative inline-flex items-center justify-center gap-2 overflow-hidden px-8 py-3.5 font-display text-lg tracking-[0.12em] uppercase transition-all duration-300'
 
   const variants = {
+    gold: 'rounded-lg bg-gold text-void hover:bg-gold/90 hover:scale-[1.03]',
     primary:
       'cta-shadow bg-ember text-white hover:bg-ember-glow hover:scale-[1.03] active:scale-[0.98]',
     secondary:

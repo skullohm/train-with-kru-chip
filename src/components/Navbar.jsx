@@ -25,7 +25,7 @@ export default function Navbar() {
           : 'bg-transparent'
       }`}
     >
-      <nav className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 lg:px-8">
+      <nav className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-5 py-4 lg:px-8">
         <a href="/" className="group flex items-center gap-3">
           <img
             src="/images/smt-logo.svg"
@@ -38,7 +38,7 @@ export default function Navbar() {
           </div>
         </a>
 
-        <ul className="hidden items-center gap-8 lg:flex">
+        <ul className="hidden items-center gap-3 xl:gap-5 xl:flex">
           {NAV_ITEMS.map((item) => (
             <li key={item.href}>
               <a
@@ -52,15 +52,19 @@ export default function Navbar() {
           ))}
         </ul>
 
-        <div className="hidden lg:block">
-          <CtaButton href={GYM.bookingUrl} external variant="primary">
+        <div className="hidden shrink-0 items-center gap-2 whitespace-nowrap xl:flex">
+          <CtaButton href="https://app.kruchip.com" variant="gold" className="!px-4">Open the App</CtaButton>
+          <a href="/support" className="inline-flex items-center justify-center rounded-lg bg-white px-4 py-3.5 font-display text-lg tracking-[0.12em] text-void uppercase transition-colors hover:bg-white/90">
+            Support
+          </a>
+          <CtaButton href={GYM.bookingUrl} external variant="primary" className="!px-4">
             Start Training
           </CtaButton>
         </div>
 
         <button
           type="button"
-          className="flex h-10 w-10 flex-col items-center justify-center gap-1.5 lg:hidden"
+          className="flex h-10 w-10 flex-col items-center justify-center gap-1.5 xl:hidden"
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Toggle menu"
           aria-expanded={menuOpen}
@@ -72,7 +76,7 @@ export default function Navbar() {
       </nav>
 
       <div
-        className={`fixed inset-0 top-[72px] z-40 bg-void/95 backdrop-blur-lg transition-all duration-400 lg:hidden ${
+        className={`fixed inset-0 top-[72px] z-40 overflow-y-auto bg-void/95 backdrop-blur-lg transition-all duration-400 xl:hidden ${
           menuOpen ? 'visible opacity-100' : 'invisible opacity-0'
         }`}
       >
@@ -89,6 +93,10 @@ export default function Navbar() {
             </li>
           ))}
           <li className="mt-6">
+            <CtaButton href="https://app.kruchip.com" variant="gold" className="mb-3 w-full">Open the App</CtaButton>
+            <a href="/support" onClick={() => setMenuOpen(false)} className="mb-3 inline-flex w-full items-center justify-center rounded-lg bg-white px-4 py-3.5 font-display text-lg tracking-[0.12em] text-void uppercase transition-colors hover:bg-white/90">
+              Support
+            </a>
             <CtaButton href={GYM.bookingUrl} external variant="primary" className="w-full">
               Start Training
             </CtaButton>

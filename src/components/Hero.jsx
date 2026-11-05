@@ -8,33 +8,8 @@ export default function Hero() {
       id="home"
       className="relative flex min-h-screen items-center overflow-hidden pt-20"
     >
-      <div className="absolute inset-0">
-        <img
-          src="/images/chip-win01.png"
-          alt=""
-          className="h-full w-full object-cover object-center opacity-30"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-void via-void/85 to-void/40" />
-        <div className="absolute inset-0 bg-gradient-to-t from-void via-transparent to-void/60" />
-      </div>
-
-      <div className="absolute top-1/3 right-0 h-[50vh] w-[55vw] sm:h-[60vh] sm:w-[50vw] lg:h-[70vh] lg:w-[45vw]">
-        <div className="relative h-full w-full animate-float-slow">
-          <img
-            src="/images/chip-win01.png"
-            alt="Chip Moraza-Pollard celebrating a championship win"
-            className="h-full w-full object-cover object-center opacity-50 lg:opacity-90"
-            style={{
-              maskImage: 'linear-gradient(to left, black 60%, transparent 100%)',
-              WebkitMaskImage: 'linear-gradient(to left, black 60%, transparent 100%)',
-            }}
-          />
-          <div className="absolute inset-0 box-glow-ember opacity-40" />
-        </div>
-      </div>
-
       <div className="relative z-10 mx-auto w-full max-w-7xl px-5 py-16 lg:px-8">
-        <div className="max-w-3xl">
+        <div className="mx-auto max-w-3xl text-center">
           <ScrollReveal>
             <p className="mb-4 font-mono text-xs tracking-[0.35em] text-ember uppercase animate-fade-glow">
               WBC Cruiserweight World Champion
@@ -49,14 +24,14 @@ export default function Hero() {
           </ScrollReveal>
 
           <ScrollReveal delay={2}>
-            <p className="mt-6 max-w-xl text-xl leading-relaxed text-steel md:text-2xl">
+            <p className="mx-auto mt-6 max-w-xl text-xl leading-relaxed text-steel md:text-2xl">
               Train with a world champion nak muay. Precision striking. Real fight culture.
               <span className="text-white"> Surgeon Muay Thai</span> — Plymouth, MA.
             </p>
           </ScrollReveal>
 
           <ScrollReveal delay={3}>
-            <div className="mt-10 flex flex-wrap gap-4">
+            <div className="mt-10 flex flex-wrap justify-center gap-4">
               <CtaButton href={GYM.bookingUrl} external variant="primary">
                 Train With Chip
               </CtaButton>
@@ -67,7 +42,7 @@ export default function Hero() {
           </ScrollReveal>
 
           <ScrollReveal delay={4}>
-            <div className="mt-14 flex flex-wrap gap-8 border-t border-ember/20 pt-8">
+            <div className="mt-14 flex flex-wrap justify-center gap-8 border-t border-ember/20 pt-8">
               {[
                 { label: 'Status', value: 'ACTIVE CHAMP' },
                 { label: 'Discipline', value: 'MUAY THAI' },

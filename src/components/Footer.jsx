@@ -21,7 +21,7 @@ export default function Footer() {
           <div>
             <p className="font-mono text-[10px] tracking-[0.25em] text-ember uppercase">Quick Links</p>
             <ul className="mt-4 space-y-2">
-              {['/', '/#about', '/#gym', '/#events', '/#contact', '/projects'].map((href) => (
+              {['/', '/#about', '/#gym', '/#events', '/#contact', '/seminars', '/support'].map((href) => (
                 <li key={href}>
                   <a
                     href={href}

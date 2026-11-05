@@ -73,10 +73,14 @@ export const EVENTS = [
   {
     id: 'evt-01',
     status: 'upcoming',
-    date: 'TBA 2026',
-    title: 'Next Title Defense',
-    venue: 'Location TBA',
-    description: 'Chip returns to the ring. Follow @chipthesurgeon for fight announcements and weigh-in details.',
+    date: 'Dec 12',
+    title: 'MORAZA vs DJELLAB',
+    venue: 'Citizens House of Blues, Boston',
+    description: "Chip's first Massachusetts fight in 10 years.",
+    promotion: 'NoBoundaryFight XXXI · Cruiserweight',
+    fightDate: 'Saturday, December 12, 2026',
+    times: 'Doors 5:00 PM, first bell 6:00 PM',
+    ticketsUrl: 'https://www.ticketmaster.com/noboundaryfight-xxxi-boston-massachusetts-12-12-2026/event/010064D7E500C675',
     tag: 'Championship',
   },
   {
@@ -105,7 +109,8 @@ export const NAV_ITEMS = [
   { label: 'Gym', href: '/#gym' },
   { label: 'Events', href: '/#events' },
   { label: 'Contact', href: '/#contact' },
-  { label: 'Projects', href: '/projects' },
+  { label: 'Seminars', href: '/seminars' },
+  { label: 'Support', href: '/support' },
 ]
 
 export const PROJECTS = [

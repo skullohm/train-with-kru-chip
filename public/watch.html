@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fight Replay | Surgeon Muay Thai</title>
+    <style>
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        background: #000000;
+        color: #ffffff;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        line-height: 1.5;
+      }
+      main { max-width: 960px; margin: 0 auto; padding: 24px; }
+      header {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding-bottom: 20px;
+        border-bottom: 2px solid #6B0000;
+        color: #FFB700;
+        font-size: 14px;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+      }
+      header img { height: 40px; width: auto; }
+      h1 { margin: 32px 0 8px; font-size: clamp(28px, 5vw, 40px); line-height: 1.2; }
+      p { margin: 0 0 24px; }
+      .video { aspect-ratio: 16 / 9; width: 100%; background: #6B0000; }
+      iframe { display: block; width: 100%; height: 100%; }
+      .back { display: inline-block; margin-top: 24px; color: #FFB700; text-underline-offset: 4px; }
+      .back:focus-visible { outline: 2px solid #FFB700; outline-offset: 4px; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <img src="/images/smt-logo.svg" alt="Surgeon Muay Thai logo" />
+        <span>SURGEON MUAY THAI</span>
+      </header>
+      <h1>Kru Chip: Fight Replay</h1>
+      <p>Full fight replay. Press play.</p>
+      <div class="video">
+        <iframe src="https://drive.google.com/file/d/1eUzLWdgIALFFH5mfFewVqYWR9WMbX11E/preview" title="Kru Chip fight replay" width="100%" height="100%" style="border:0" allow="autoplay; encrypted-media; fullscreen" allowfullscreen></iframe>
+      </div>
+      <a class="back" href="/">Back to kruchip.com</a>
+    </main>
+  </body>
+</html>
